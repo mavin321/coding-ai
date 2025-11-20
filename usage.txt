@@ -1,0 +1,15 @@
+# Explain lines 1–40 in main.py
+python cli.py explain main.py --start 1 --end 40
+
+# Generate code from a natural language instruction
+python cli.py generate "Write a Python function that checks if a number is prime."
+
+# Refactor a segment
+python cli.py refactor utils.py --start 10 --end 80
+
+# Generate tests for a specific function
+python cli.py tests math_utils.py is_prime --start 1 --end 120
+
+
+cd finetune
+python train_lora.py

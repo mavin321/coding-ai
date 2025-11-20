@@ -1,0 +1,3 @@
+{"instruction": "Explain this Python function.", "input": "def add(a, b):\n    return a + b", "output": "This function takes two arguments, a and b, and returns their sum."}
+{"instruction": "Write a Python function to compute factorial.", "input": "", "output": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n-1)"}
+{"instruction": "Refactor this code to be more Pythonic.", "input": "result = []\nfor x in items:\n    if x % 2 == 0:\n        result.append(x)", "output": "result = [x for x in items if x % 2 == 0]"}

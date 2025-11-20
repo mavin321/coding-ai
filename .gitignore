@@ -1,0 +1,111 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.sqlite3
+*.db
+*.log
+*.pot
+*.pyc
+*.mypy_cache/
+*.coverage
+.coverage
+.cache/
+.pytest_cache/
+dist/
+build/
+venv/
+env/
+.venv/
+
+# Ignore Python virtual environment
+venv/
+ENV/
+env.bak/
+*.egg-info/
+.eggs/
+
+# -------------------------
+# FastAPI / Backend
+# -------------------------
+backend/__pycache__/
+backend/*.pyc
+backend/finetune/__pycache__/
+backend/lora-output/
+backend/checkpoints/
+backend/tmp/
+backend/logs/
+
+# HuggingFace / model weights
+*.bin
+*.safetensors
+*.pt
+*.ckpt
+*.pth
+.huggingface/
+.cache/huggingface/
+transformers_cache/
+datasets_cache/
+
+# -------------------------
+# React / Frontend
+# -------------------------
+# Node modules
+node_modules/
+frontend/node_modules/
+
+# Build output
+frontend/build/
+frontend/dist/
+frontend/.parcel-cache/
+frontend/.next/
+frontend/.nuxt/
+
+# React dev cache
+frontend/.eslintcache
+frontend/.cache/
+frontend/.vite/
+frontend/.turbo
+
+# ENV files
+frontend/.env
+backend/.env
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# -------------------------
+# OS Files
+# -------------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# -------------------------
+# IDE / Editor
+# -------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -------------------------
+# Temporary files
+# -------------------------
+*.tmp
+*.temp
+tmp/
+temp/
