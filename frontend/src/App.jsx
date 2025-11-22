@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// Import necessary MUI components
 import {
   Container,
   Box,
@@ -11,26 +10,25 @@ import {
   MenuItem,
   InputLabel,
   Paper,
-  CssBaseline, // Optional: for consistent baseline styling
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  CircularProgress,
 } from "@mui/material";
+import { explainCode, generateCode, refactorCode, generateTests } from "./api";
 
-// Placeholder for your API functions (ensure these are correctly imported in your actual project)
-// import { explainCode, generateCode, refactorCode, generateTests } from "./api";
-
-// Mock API functions for demonstration:
-const explainCode = async (code) => `Explanation for: \n${code}`;
-const generateCode = async (prompt) =>
-  `Generated code based on prompt: \n${prompt}`;
-const refactorCode = async (code) => `Refactored code for: \n${code}`;
-const generateTests = async (code, funcName) =>
-  `Tests for function '${funcName}' in code: \n${code}`;
-
-function App() {
+/**
+ * Production‑ready, visually improved UI for the AI Coding Assistant.
+ * Uses a card‑based layout, modern spacing, responsive structure,
+ * and improved UX for inputs, loading states, and output display.
+ */
+export default function App() {
   const [mode, setMode] = useState("explain");
   const [input, setInput] = useState("");
-  const [extra, setExtra] = useState(""); // for function name
+  const [extra, setExtra] = useState("");
   const [output, setOutput] = useState("");
-  const [loading, setLoading] = useState(false); // State for loading indicator
+  const [loading, setLoading] = useState(false);
 
   const modes = [
     { value: "explain", label: "Explain Code" },
@@ -49,15 +47,10 @@ function App() {
     let result = "";
 
     try {
-      if (mode === "explain") {
-        result = await explainCode(input);
-      } else if (mode === "generate") {
-        result = await generateCode(input);
-      } else if (mode === "refactor") {
-        result = await refactorCode(input);
-      } else if (mode === "tests") {
-        result = await generateTests(input, extra);
-      }
+      if (mode === "explain") result = await explainCode(input);
+      else if (mode === "generate") result = await generateCode(input);
+      else if (mode === "refactor") result = await refactorCode(input);
+      else if (mode === "tests") result = await generateTests(input, extra);
     } catch (error) {
       result = `An error occurred: ${error.message}`;
     }
@@ -67,97 +60,109 @@ function App() {
   }
 
   return (
-    // <CssBaseline /> is recommended if you use the MUI theme/styles globally
-    <Container maxWidth="md">
-      <Box sx={{ my: 4, textAlign: "center" }}>
-        <Typography variant="h3" component="h1" gutterBottom color="primary">
-          🤖 AI Coding Assistant
+    <Container maxWidth="md" sx={{ py: 6 }}>
+      <Box textAlign="center" mb={5}>
+        <Typography variant="h3" fontWeight={700} gutterBottom>
+          AI Coding Assistant
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          Improve, generate, refactor, and explain code with ease
         </Typography>
       </Box>
 
-      <Paper elevation={3} sx={{ p: 3 }}>
-        {/* Mode Selection */}
-        <FormControl fullWidth sx={{ mb: 3 }}>
-          <InputLabel id="mode-select-label">Select Mode</InputLabel>
-          <Select
-            labelId="mode-select-label"
-            id="mode-select"
-            value={mode}
-            label="Select Mode"
-            onChange={(e) => {
-              setMode(e.target.value);
-              // Clear extra field when mode changes, unless it's 'tests'
-              if (e.target.value !== "tests") {
-                setExtra("");
-              }
-            }}
-          >
-            {modes.map((m) => (
-              <MenuItem key={m.value} value={m.value}>
-                {m.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-
-        {/* Main Input Area */}
-        <TextField
-          fullWidth
-          multiline
-          rows={10}
-          label={mode === "generate" ? "Code Description" : "Source Code"}
-          placeholder={inputPlaceholder}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          variant="outlined"
-          sx={{ mb: 3 }}
+      <Card elevation={4} sx={{ borderRadius: 4 }}>
+        <CardHeader
+          title="Task Configuration"
+          titleTypographyProps={{ variant: "h5", fontWeight: 600 }}
+          sx={{ pb: 0, mt: 1 }}
         />
 
-        {/* Extra Input for Generate Tests Mode */}
-        {mode === "tests" && (
+        <CardContent>
+          {/* Mode Selection */}
+          <FormControl fullWidth sx={{ mb: 3 }}>
+            <InputLabel id="mode-select-label">Select Mode</InputLabel>
+            <Select
+              labelId="mode-select-label"
+              value={mode}
+              label="Select Mode"
+              onChange={(e) => {
+                setMode(e.target.value);
+                if (e.target.value !== "tests") setExtra("");
+              }}
+            >
+              {modes.map((m) => (
+                <MenuItem key={m.value} value={m.value}>
+                  {m.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          {/* Main Input */}
           <TextField
             fullWidth
-            label="Function Name (Required for Tests)"
-            placeholder="e.g., calculateTotal"
-            value={extra}
-            onChange={(e) => setExtra(e.target.value)}
+            multiline
+            rows={10}
+            label={mode === "generate" ? "Code Description" : "Source Code"}
+            placeholder={inputPlaceholder}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             variant="outlined"
             sx={{ mb: 3 }}
           />
-        )}
 
-        {/* Submit Button */}
-        <Button
-          variant="contained"
-          size="large"
-          onClick={handleSubmit}
-          disabled={loading}
-          fullWidth
-          sx={{ mb: 4, py: 1.5 }} // py adds vertical padding to make button taller
-        >
-          {loading ? "Running..." : "Run Assistant"}
-        </Button>
+          {/* Tests Extra Field */}
+          {mode === "tests" && (
+            <TextField
+              fullWidth
+              label="Function Name (Required for Tests)"
+              placeholder="e.g., calculateTotal"
+              value={extra}
+              onChange={(e) => setExtra(e.target.value)}
+              variant="outlined"
+              sx={{ mb: 3 }}
+            />
+          )}
 
-        <Typography variant="h5" component="h2" gutterBottom>
-          🚀 Output:
-        </Typography>
+          {/* Submit Button */}
+          <Button
+            variant="contained"
+            size="large"
+            fullWidth
+            onClick={handleSubmit}
+            disabled={loading || !input.trim()}
+            sx={{ py: 1.6, fontSize: "1.05rem", fontWeight: 600 }}
+          >
+            {loading ? (
+              <CircularProgress size={28} color="inherit" />
+            ) : (
+              "Run Assistant"
+            )}
+          </Button>
+        </CardContent>
+      </Card>
 
-        {/* Output Area */}
-        <Paper
-          variant="outlined"
-          sx={{
-            p: 2,
-            backgroundColor: "action.hover", // Light background for code
-            whiteSpace: "pre-wrap",
-            fontFamily: "monospace",
-            minHeight: 150, // Ensure a minimum height
-          }}
-        >
-          {output || "Output will appear here..."}
-        </Paper>
-      </Paper>
+      <Card elevation={3} sx={{ mt: 5, borderRadius: 4 }}>
+        <CardHeader
+          title="Output"
+          titleTypographyProps={{ variant: "h5", fontWeight: 600 }}
+        />
+        <Divider />
+        <CardContent>
+          <Paper
+            variant="outlined"
+            sx={{
+              p: 2,
+              minHeight: 200,
+              fontFamily: "monospace",
+              whiteSpace: "pre-wrap",
+              backgroundColor: "#fafafa",
+            }}
+          >
+            {output || "Output will appear here..."}
+          </Paper>
+        </CardContent>
+      </Card>
     </Container>
   );
 }
-
-export default App;

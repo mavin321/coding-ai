@@ -13,15 +13,15 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling,
 )
-from peft import LoraConfig, get_peft_model
-
-from dataset import load_instruction_dataset, format_example
+from peft import LoraConfig, get_peft_model, TaskType
+# Assuming these modules exist in your project structure
+from .dataset import load_instruction_dataset, format_example
 from backend.config import MODEL_NAME, DEVICE, SEED
 
 
 @dataclass
 class FinetuneConfig:
-    data_path: str = "data"
+    data_path: str = "C:/Users/admin/python/coding-ai/data"
     output_dir: str = "lora-output"
     num_train_epochs: int = 3
     per_device_train_batch_size: int = 1
@@ -42,6 +42,36 @@ def tokenize_function(example, tokenizer, max_seq_length: int):
         padding="max_length",
     )
 
+# --- NEW FUNCTION FOR FINDING TARGET MODULES ---
+def find_lora_target_modules(model: torch.nn.Module) -> List[str]:
+    """
+    Identifies the names of linear layers in the model that are suitable for LoRA.
+    For CodeGen models, these are typically the attention projection layers.
+    """
+    # Common names for attention layers in CodeGen and similar architectures
+    potential_target_names = ["q_attn", "v_attn", "q_proj", "v_proj", "query_key_value"]
+    
+    # Collect the last part of the name for all linear layers that match a potential target
+    target_modules = set()
+    for name, module in model.named_modules():
+        if isinstance(module, torch.nn.Linear):
+            # Check if the layer name (the last part of the path) is a known target
+            layer_name = name.split('.')[-1]
+            if layer_name in potential_target_names or any(
+                p_name in layer_name for p_name in potential_target_names
+            ):
+                target_modules.add(layer_name)
+    
+    # If specific names are not found, fall back to known CodeGen names
+    if not target_modules:
+        print("[WARNING] Could not automatically find common LoRA target layers. Defaulting to 'q_attn' and 'v_attn'.")
+        # This fallback is what caused your previous error, but it's a safety net.
+        return ["q_attn", "v_attn"]
+
+    print(f"[finetune] Automatically found LoRA target modules: {sorted(list(target_modules))}")
+    return sorted(list(target_modules))
+# ---------------------------------------------
+
 
 def main():
     cfg = FinetuneConfig()
@@ -55,15 +85,21 @@ def main():
     base_model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
     base_model.to(DEVICE)
 
-    # PEFT / LoRA config
+    # --- FIX APPLIED HERE ---
+    # 1. Dynamically find the correct target modules
+    lora_target_modules = find_lora_target_modules(base_model)
+    
+    # 2. PEFT / LoRA config
     lora_config = LoraConfig(
-        r=8,                      # rank
+        r=8,  # LoRA rank
         lora_alpha=16,
-        target_modules=["q_proj", "v_proj", "k_proj", "o_proj"],  # depends on model; adjust if needed
         lora_dropout=0.05,
         bias="none",
-        task_type="CAUSAL_LM",
+        task_type=TaskType.CAUSAL_LM,
+        # Use the dynamically determined modules
+        target_modules=lora_target_modules, 
     )
+    # -------------------------
 
     model = get_peft_model(base_model, lora_config)
     model.print_trainable_parameters()
@@ -90,7 +126,7 @@ def main():
         warmup_steps=cfg.warmup_steps,
         logging_steps=cfg.logging_steps,
         save_steps=cfg.save_steps,
-        evaluation_strategy="steps",
+        eval_strategy="steps",
         eval_steps=cfg.save_steps,
         weight_decay=0.01,
         fp16=torch.cuda.is_available(),

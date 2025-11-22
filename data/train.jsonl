@@ -1,0 +1,121 @@
+{"instruction":"Explain this Python function.","input":"def add(a, b): return a + b","output":"This function takes two numbers, a and b, and returns their sum."}
+{"instruction":"Explain what this loop does.","input":"result=[]\nfor x in items:\n    if x>10: result.append(x)","output":"The loop iterates through items and adds only the values greater than 10 into the result list."}
+{"instruction":"Explain this code.","input":"s = ''.join([c for c in text if c.isalpha()])","output":"This builds a new string containing only the alphabetic characters from text, removing digits, spaces, and punctuation."}
+{"instruction":"Explain line by line.","input":"def factorial(n):\n    if n<=1: return 1\n    return n*factorial(n-1)","output":"The function computes factorial recursively. If n is 0 or 1, it returns 1. Otherwise, it returns n multiplied by factorial(n-1)."}
+{"instruction":"Explain this function in simple terms.","input":"def reverse(s): return s[::-1]","output":"This function returns a reversed version of the string using slicing syntax."}
+{"instruction":"Explain this Python comprehension.","input":"evens=[x for x in nums if x%2==0]","output":"Creates a list containing only even numbers from nums."}
+{"instruction":"Explain this snippet.","input":"total=sum(prices.values())","output":"Sums all values in the dictionary prices and stores the result in total."}
+{"instruction":"Explain what this code is doing.","input":"def safe_div(a,b):\n    try: return a/b\n    except ZeroDivisionError: return None","output":"Attempts to divide a by b. If b is zero, returns None instead of raising an error."}
+{"instruction":"Explain the purpose of this function.","input":"def greet(name): print(f'Hello, {name}!')","output":"Prints a greeting message addressed to the provided name."}
+{"instruction":"Explain this.","input":"unique=set(items)","output":"Creates a set of unique elements from items, removing duplicates."}
+{"instruction":"Explain in detail.","input":"import math\ndef circle_area(r): return math.pi*r*r","output":"Computes the area of a circle using the formula πr²."}
+{"instruction":"Explain what this sorting code does.","input":"arr.sort(key=lambda x: x.lower())","output":"Sorts strings in arr alphabetically without considering uppercase/lowercase differences."}
+{"instruction":"Explain the intention behind this code.","input":"mapped={x:len(x) for x in words}","output":"Creates a dictionary mapping each word in words to its length."}
+{"instruction":"Break down the code.","input":"def square_all(lst): return [x*x for x in lst]","output":"Returns a new list where each number in lst is squared."}
+{"instruction":"Explain this dictionary operation.","input":"value=my_dict.get('key',0)","output":"Retrieves 'key' from the dictionary. If the key is missing, it returns 0."}
+{"instruction":"Explain this search code.","input":"if 'admin' in user_roles: allow=True","output":"Checks whether 'admin' exists in user_roles; if so, sets allow=True."}
+{"instruction":"Explain what this code produces.","input":"pairs=[(i,j) for i in range(3) for j in range(2)]","output":"Creates all (i,j) pairs where i is 0–2 and j is 0–1."}
+{"instruction":"Explain this function.","input":"def is_even(n): return n%2==0","output":"Returns True if n is divisible by 2, otherwise False."}
+{"instruction":"Explain this snippet.","input":"names=[n.strip().title() for n in raw.split(',')]","output":"Splits a string by commas, trims whitespace from each part, and converts each name to Title Case."}
+{"instruction":"Explain simply.","input":"def max_of_three(a,b,c): return max(a,b,c)","output":"Returns the largest of three values."}
+{"instruction":"Refactor this code to be more Pythonic.","input":"result=[]\nfor x in items:\n    if x%2==0:\n        result.append(x)","output":"result = [x for x in items if x % 2 == 0]"}
+{"instruction":"Refactor to improve readability.","input":"if x>10:\n    return True\nelse:\n    return False","output":"return x > 10"}
+{"instruction":"Refactor without changing behavior.","input":"total=0\nfor n in nums:\n    total = total + n","output":"total = sum(nums)"}
+{"instruction":"Refactor this nested condition.","input":"if user:\n    if user.is_admin:\n        do()","output":"if user and user.is_admin:\n    do()"}
+{"instruction":"Make this function cleaner.","input":"def greet(name):\n    message='Hello, '+name+'!'\n    return message","output":"def greet(name):\n    return f\"Hello, {name}!\""}
+{"instruction":"Refactor to avoid mutation.","input":"for i in range(len(arr)):\n    arr[i]=arr[i]*2","output":"arr = [x * 2 for x in arr]"}
+{"instruction":"Refactor for clarity.","input":"if len(data)==0:\n    return None","output":"if not data:\n    return None"}
+{"instruction":"Refactor this code.","input":"output=''\nfor c in text:\n    output+=c.upper()","output":"output = text.upper()"}
+{"instruction":"Simplify this.","input":"if flag==True:\n    run()","output":"if flag:\n    run()"}
+{"instruction":"Refactor this SQL builder.","input":"query='SELECT * FROM table WHERE id='+str(i)","output":"query = f\"SELECT * FROM table WHERE id={i}\""}
+{"instruction":"Refactor for maintainability.","input":"if role=='admin' or role=='owner':\n    allow=True","output":"if role in ('admin', 'owner'):\n    allow = True"}
+{"instruction":"Refactor using Python features.","input":"tmp=[]\nfor key in d.keys():\n    tmp.append(key)","output":"tmp = list(d.keys())"}
+{"instruction":"Refactor into a one-liner.","input":"even=[]\nfor n in nums:\n    if n%2==0: even.append(n)","output":"even = [n for n in nums if n % 2 == 0]"}
+{"instruction":"Make this code more Pythonic.","input":"cap=[]\nfor w in words:\n    cap.append(w.capitalize())","output":"cap = [w.capitalize() for w in words]"}
+{"instruction":"Refactor to reduce nesting.","input":"if user:\n    if user.active:\n        if user.role=='admin':\n            access=True","output":"if user and user.active and user.role == 'admin':\n    access = True"}
+{"instruction":"Improve this error handling.","input":"try:\n    x=a/b\nexcept:\n    x=None","output":"try:\n    x = a / b\nexcept ZeroDivisionError:\n    x = None"}
+{"instruction":"Refactor redundant return.","input":"if x<0:\n    return False\nelse:\n    return True","output":"return x >= 0"}
+{"instruction":"Refactor to use dictionary comprehension.","input":"result={}\nfor k in keys:\n    result[k]=len(k)","output":"result = {k: len(k) for k in keys}"}
+{"instruction":"Make this function more concise.","input":"def square(n):\n    return n*n","output":"def square(n):\n    return n * n"}
+{"instruction":"Refactor this date formatting code.","input":"formatted = year+'-'+month+'-'+day","output":"formatted = f\"{year}-{month}-{day}\""}
+{"instruction":"Fix the bug in this code.","input":"def divide(a,b): return a/b if b!=0 else None","output":"def divide(a, b):\n    if b == 0:\n        return None\n    return a / b"}
+{"instruction":"Find and fix the bug.","input":"def get_first(lst): return lst[0]","output":"def get_first(lst):\n    return lst[0] if lst else None"}
+{"instruction":"Correct the logic.","input":"if score>90:\n    grade='A'\nelif score>80:\n    grade='B'","output":"if score >= 90:\n    grade = 'A'\nelif score >= 80:\n    grade = 'B'"}
+{"instruction":"Fix this code.","input":"for i in range(1,10): print(i)\nprint('Done',i)","output":"for i in range(1, 10):\n    print(i)\nprint('Done:', i)"}
+{"instruction":"Fix indexing error.","input":"return arr[len(arr)]","output":"return arr[len(arr) - 1]"}
+{"instruction":"Fix this Python code.","input":"if name = 'Bob':","output":"if name == 'Bob':"}
+{"instruction":"Fix this crash.","input":"def upper_all(words): return [w.upper for w in words]","output":"def upper_all(words):\n    return [w.upper() for w in words]"}
+{"instruction":"Fix type error.","input":"total = '0'\nfor n in nums: total+=n","output":"total = 0\nfor n in nums:\n    total += n"}
+{"instruction":"Fix file handling.","input":"f=open('data.txt'); data=f.read()","output":"with open('data.txt') as f:\n    data = f.read()"}
+{"instruction":"Fix infinite loop.","input":"while i<10:\n    print(i)","output":"while i < 10:\n    print(i)\n    i += 1"}
+{"instruction":"Fix wrong comparison.","input":"if x is 5:","output":"if x == 5:"}
+{"instruction":"Fix this function.","input":"def safe_get(d,k): return d[k]","output":"def safe_get(d, k):\n    return d.get(k)"}
+{"instruction":"Fix off-by-one.","input":"for i in range(1, len(arr)):\n    print(arr[i-1])","output":"for i in range(len(arr)):\n    print(arr[i])"}
+{"instruction":"Fix None handling.","input":"return name.upper()","output":"return name.upper() if name else None"}
+{"instruction":"Resolve this error.","input":"if user.active():","output":"if user.active:"}
+{"instruction":"Fix list mutation bug.","input":"for x in items:\n    items.remove(x)","output":"for x in items[:]:\n    items.remove(x)"}
+{"instruction":"Fix function logic.","input":"def is_positive(n): return n>0 and n<0","output":"def is_positive(n): return n > 0"}
+{"instruction":"Fix flawed sorting.","input":"arr.sort()","output":"arr = sorted(arr)"}
+{"instruction":"Fix missing return.","input":"def foo(): x=1","output":"def foo():\n    x = 1\n    return x"}
+{"instruction":"Fix bug in string joining.","input":"'-'.join(['a',1,'b'])","output":"' - '.join([str(x) for x in ['a',1,'b']])"}
+{"instruction":"Write unit tests for this function.","input":"def add(a,b): return a+b","output":"def test_add():\n    assert add(1,2) == 3\n    assert add(-1,1) == 0\n    assert add(0,0) == 0"}
+{"instruction":"Generate pytest tests.","input":"def is_even(n): return n%2==0","output":"def test_is_even():\n    assert is_even(2)\n    assert not is_even(3)\n    assert is_even(0)"}
+{"instruction":"Write tests.","input":"def reverse(s): return s[::-1]","output":"def test_reverse():\n    assert reverse('abc')=='cba'\n    assert reverse('')==''"}
+{"instruction":"Create unit tests.","input":"def multiply(a,b): return a*b","output":"def test_multiply():\n    assert multiply(3,4)==12\n    assert multiply(0,10)==0"}
+{"instruction":"Write tests for edge cases.","input":"def safe_div(a,b): return a/b if b else None","output":"def test_safe_div():\n    assert safe_div(4,2)==2\n    assert safe_div(4,0)==None"}
+{"instruction":"Write pytest tests.","input":"def max_of_three(a,b,c): return max(a,b,c)","output":"def test_max_of_three():\n    assert max_of_three(1,2,3)==3\n    assert max_of_three(5,1,2)==5"}
+{"instruction":"Generate tests.","input":"def first(lst): return lst[0] if lst else None","output":"def test_first():\n    assert first([1,2,3])==1\n    assert first([])==None"}
+{"instruction":"Produce good unit tests.","input":"def square(n): return n*n","output":"def test_square():\n    assert square(4)==16\n    assert square(-3)==9"}
+{"instruction":"Create pytest cases.","input":"def is_upper(s): return s.isupper()","output":"def test_is_upper():\n    assert is_upper('ABC')\n    assert not is_upper('AbC')"}
+{"instruction":"Write tests.","input":"def contains(lst,x): return x in lst","output":"def test_contains():\n    assert contains([1,2,3],2)\n    assert not contains([1,2,3],4)"}
+{"instruction":"Write tests.","input":"def double_all(lst): return [x*2 for x in lst]","output":"def test_double_all():\n    assert double_all([1,2])==[2,4]"}
+{"instruction":"Write unit tests.","input":"def starts_with(s,p): return s.startswith(p)","output":"def test_starts_with():\n    assert starts_with('hello','he')\n    assert not starts_with('hello','x')"}
+{"instruction":"Generate edge-case tests.","input":"def last(lst): return lst[-1] if lst else None","output":"def test_last():\n    assert last([1,2,3]) == 3\n    assert last([]) == None"}
+{"instruction":"Write tests.","input":"def count_vowels(s): return sum(c in 'aeiou' for c in s)","output":"def test_count_vowels():\n    assert count_vowels('hello')==2\n    assert count_vowels('sky')==0"}
+{"instruction":"Write tests.","input":"def concat(a,b): return a+b","output":"def test_concat():\n    assert concat('a','b')=='ab'"}
+{"instruction":"Write tests.","input":"def safe_len(x): return len(x) if x else 0","output":"def test_safe_len():\n    assert safe_len('abc')==3\n    assert safe_len([])==0"}
+{"instruction":"Write proper tests.","input":"def is_negative(n): return n<0","output":"def test_is_negative():\n    assert is_negative(-1)\n    assert not is_negative(0)"}
+{"instruction":"Write tests.","input":"def add_prefix(s,p): return p+s","output":"def test_add_prefix():\n    assert add_prefix('world','hello_')=='hello_world'"}
+{"instruction":"Write pytest examples.","input":"def average(nums): return sum(nums)/len(nums) if nums else None","output":"def test_average():\n    assert average([1,2,3])==2\n    assert average([])==None"}
+{"instruction":"Create high-quality tests.","input":"def remove_spaces(s): return s.replace(' ','')","output":"def test_remove_spaces():\n    assert remove_spaces('a b c')=='abc'\n    assert remove_spaces('')==''"}
+{"instruction":"Write a Python function that checks if a number is prime.","input":"","output":"def is_prime(n):\n    if n<=1: return False\n    for i in range(2,int(n**0.5)+1):\n        if n%i==0: return False\n    return True"}
+{"instruction":"Generate a function to reverse a list.","input":"","output":"def reverse_list(lst):\n    return lst[::-1]"}
+{"instruction":"Write a function that counts words.","input":"","output":"def count_words(text):\n    return len(text.split())"}
+{"instruction":"Generate a function that removes duplicates.","input":"","output":"def remove_duplicates(lst):\n    return list(dict.fromkeys(lst))"}
+{"instruction":"Create a function that returns the min and max.","input":"","output":"def minmax(lst):\n    return (min(lst), max(lst)) if lst else None"}
+{"instruction":"Generate a function that checks palindrome.","input":"","output":"def is_palindrome(s):\n    return s == s[::-1]"}
+{"instruction":"Generate Python code.","input":"Sort a list of numbers.","output":"def sort_numbers(nums):\n    return sorted(nums)"}
+{"instruction":"Write a function to merge two dicts.","input":"","output":"def merge_dicts(a,b):\n    return {**a, **b}"}
+{"instruction":"Generate simple calculator functions.","input":"","output":"def add(a,b): return a+b\n\ndef sub(a,b): return a-b\n\ndef mul(a,b): return a*b\n\ndef div(a,b): return None if b==0 else a/b"}
+{"instruction":"Write a function to flatten nested lists.","input":"","output":"def flatten(lst):\n    out=[]\n    for item in lst:\n        if isinstance(item,list): out.extend(item)\n        else: out.append(item)\n    return out"}
+{"instruction":"Generate a function","input":"capitalize each word","output":"def capitalize_words(text):\n    return ' '.join([w.capitalize() for w in text.split()])"}
+{"instruction":"Write a Python function.","input":"Return even numbers only.","output":"def filter_even(nums):\n    return [x for x in nums if x % 2 == 0]"}
+{"instruction":"Generate factorial function.","input":"","output":"def factorial(n):\n    if n<=1: return 1\n    return n * factorial(n-1)"}
+{"instruction":"Generate Fibonacci code.","input":"","output":"def fibonacci(n):\n    if n<=1: return n\n    a,b=0,1\n    for _ in range(n-1):\n        a,b=b,a+b\n    return b"}
+{"instruction":"Generate code.","input":"Check if string contains numbers.","output":"def contains_digits(s):\n    return any(c.isdigit() for c in s)"}
+{"instruction":"Write a function.","input":"convert Celsius to Fahrenheit","output":"def c_to_f(c):\n    return (c * 9/5) + 32"}
+{"instruction":"Generate code.","input":"count uppercase letters","output":"def count_uppercase(s):\n    return sum(1 for c in s if c.isupper())"}
+{"instruction":"Create a function.","input":"remove None values","output":"def remove_none(lst):\n    return [x for x in lst if x is not None]"}
+{"instruction":"Write a script for greeting.","input":"","output":"def greet(name):\n    return f\"Hello, {name}!\""}
+{"instruction":"Generate code.","input":"find duplicates in list","output":"def find_duplicates(lst):\n    seen=set()\n    dupes=set()\n    for x in lst:\n        if x in seen: dupes.add(x)\n        else: seen.add(x)\n    return list(dupes)"}
+{"instruction":"Write a docstring.","input":"def add(a,b): return a+b","output":"\"\"\"\nReturn the sum of a and b.\n\nParameters:\n    a (number): first value\n    b (number): second value\n\"\"\""}
+{"instruction":"Add documentation.","input":"def is_even(n): return n%2==0","output":"\"\"\"\nReturn True if n is even, False otherwise.\n\"\"\""}
+{"instruction":"Write a docstring.","input":"def reverse(s): return s[::-1]","output":"\"\"\"\nReturn a reversed copy of the string s.\n\"\"\""}
+{"instruction":"Document this function.","input":"def greet(name): print(f'Hello {name}')","output":"\"\"\"\nPrint a greeting containing the given name.\n\"\"\""}
+{"instruction":"Write docstring.","input":"def safe_div(a,b): return a/b if b else None","output":"\"\"\"\nDivide a by b. Return None if b is zero.\n\"\"\""}
+{"instruction":"Add documentation.","input":"def count_words(text): return len(text.split())","output":"\"\"\"\nCount the number of words in a string.\n\"\"\""}
+{"instruction":"Document this code.","input":"def square(n): return n*n","output":"\"\"\"\nReturn the square of a number n.\n\"\"\""}
+{"instruction":"Write description.","input":"def contains(lst,x): return x in lst","output":"\"\"\"\nReturn True if x is present in lst.\n\"\"\""}
+{"instruction":"Write docstring.","input":"def remove_none(lst): return [x for x in lst if x]","output":"\"\"\"\nReturn a new list with falsy values removed.\n\"\"\""}
+{"instruction":"Document parameters.","input":"def merge(a,b): return {**a,**b}","output":"\"\"\"\nMerge two dictionaries and return the result.\n\"\"\""}
+{"instruction":"Write documentation.","input":"def flatten(lst): ...","output":"\"\"\"\nFlatten a list of nested lists into a single list.\n\"\"\""}
+{"instruction":"Generate docstring.","input":"def factorial(n): ...","output":"\"\"\"\nCompute the factorial of n recursively.\n\"\"\""}
+{"instruction":"Add documentation.","input":"def starts_with(s,p): return s.startswith(p)","output":"\"\"\"\nReturn True if string s begins with prefix p.\n\"\"\""}
+{"instruction":"Write docstring.","input":"def find_duplicates(lst): ...","output":"\"\"\"\nReturn a list of duplicate elements found in lst.\n\"\"\""}
+{"instruction":"Add top-level description.","input":"def average(nums): return sum(nums)/len(nums)","output":"\"\"\"\nCompute the average of a list of numbers.\n\"\"\""}
+{"instruction":"Document the function.","input":"def last(lst): return lst[-1]","output":"\"\"\"\nReturn the last element of lst.\n\"\"\""}
+{"instruction":"Write code documentation.","input":"def title_case(s): return s.title()","output":"\"\"\"\nReturn a title-cased version of the string s.\n\"\"\""}
+{"instruction":"Document behavior.","input":"def is_negative(n): return n<0","output":"\"\"\"\nReturn True if n is negative.\n\"\"\""}
+{"instruction":"Write docstring.","input":"def add_prefix(s,p): return p+s","output":"\"\"\"\nReturn string s with prefix p added.\n\"\"\""}
+{"instruction":"Write a detailed description.","input":"def minmax(lst): ...","output":"\"\"\"\nReturn a tuple (min, max) of a list.\n\"\"\""}
+

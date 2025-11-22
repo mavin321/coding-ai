@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers.ai import router as ai_router
+from backend.routers.ai import router as ai_router
 
 app = FastAPI(title="AI Coding Assistant API")
 

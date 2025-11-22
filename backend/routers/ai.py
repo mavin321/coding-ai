@@ -3,8 +3,8 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from  backend.model_client import generate_response
-from prompts import (
+from backend.model_client import generate_response
+from backend.prompts import (
     make_explain_prompt,
     make_generate_prompt,
     make_refactor_prompt,

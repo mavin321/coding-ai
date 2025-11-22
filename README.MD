@@ -282,8 +282,8 @@ data/val.jsonl
 ### 2. Run fine-tuning
 
 ```bash
-cd backend/finetune
-python train_lora.py
+from project root
+python -m finetune.train_lora
 ```
 
 Your LoRA weights will be saved in:

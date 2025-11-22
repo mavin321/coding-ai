@@ -1,0 +1,20 @@
+{"instruction":"Explain simply.","input":"def max_of_three(a,b,c): return max(a,b,c)","output":"Returns the largest of three values."}
+{"instruction":"Refactor to improve readability.","input":"if x>10:\n    return True\nelse:\n    return False","output":"return x > 10"}
+{"instruction":"Fix None handling.","input":"return name.upper()","output":"return name.upper() if name else None"}
+{"instruction":"Write pytest tests.","input":"def max_of_three(a,b,c): return max(a,b,c)","output":"def test_max_of_three():\n    assert max_of_three(1,2,3)==3\n    assert max_of_three(5,1,2)==5"}
+{"instruction":"Write a Python function that checks if a number is prime.","input":"","output":"def is_prime(n):\n    if n<=1: return False\n    for i in range(2,int(n**0.5)+1):\n        if n%i==0: return False\n    return True"}
+{"instruction":"Write a docstring.","input":"def reverse(s): return s[::-1]","output":"\"\"\"\nReturn a reversed copy of the string s.\n\"\"\""}
+{"instruction":"Explain this Python comprehension.","input":"evens=[x for x in nums if x%2==0]","output":"Creates a list containing only even numbers from nums."}
+{"instruction":"Refactor this SQL builder.","input":"query='SELECT * FROM table WHERE id='+str(i)","output":"query = f\"SELECT * FROM table WHERE id={i}\""}
+{"instruction":"Fix indexing error.","input":"return arr[len(arr)]","output":"return arr[len(arr) - 1]"}
+{"instruction":"Write tests.","input":"def reverse(s): return s[::-1]","output":"def test_reverse():\n    assert reverse('abc')=='cba'\n    assert reverse('')==''"}
+{"instruction":"Create a function that returns the min and max.","input":"","output":"def minmax(lst):\n    return (min(lst), max(lst)) if lst else None"}
+{"instruction":"Refactor for clarity.","input":"if len(data)==0:\n    return None","output":"if not data:\n    return None"}
+{"instruction":"Explain this snippet.","input":"names=[n.strip().title() for n in raw.split(',')]","output":"Splits a string by commas, trims whitespace from each part, and converts each name to Title Case."}
+{"instruction":"Fix file handling.","input":"f=open('data.txt'); data=f.read()","output":"with open('data.txt') as f:\n    data = f.read()"}
+{"instruction":"Write unit tests for this function.","input":"def add(a,b): return a+b","output":"def test_add():\n    assert add(1,2) == 3\n    assert add(-1,1) == 0\n    assert add(0,0) == 0"}
+{"instruction":"Write a docstring.","input":"def add(a,b): return a+b","output":"\"\"\"\nReturn the sum of a and b.\n\"\"\""}
+{"instruction":"Write a function to reverse a list.","input":"","output":"def reverse_list(lst):\n    return lst[::-1]"}
+{"instruction":"Fix the bug in this code.","input":"def get_first(lst): return lst[0]","output":"def get_first(lst):\n    return lst[0] if lst else None"}
+{"instruction":"Refactor to reduce nesting.","input":"if user:\n    if user.active:\n        if user.role=='admin':\n            access=True","output":"if user and user.active and user.role == 'admin':\n    access = True"}
+{"instruction":"Write documentation.","input":"def flatten(lst): ...","output":"\"\"\"\nFlatten a list of nested lists into a single list.\n\"\"\""}
